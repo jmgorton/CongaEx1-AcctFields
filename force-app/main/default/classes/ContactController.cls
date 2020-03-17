@@ -7,21 +7,30 @@ public with sharing class ContactController {
     return [
       SELECT Id, Name, Title, Phone, Email
       FROM Contact
-      WITH // WHERE Picture__c != null
-      SECURITY_ENFORCED
-      LIMIT 20
+      WITH SECURITY_ENFORCED
+      LIMIT 10
     ];
   }
 
   @AuraEnabled(cacheable=true)
-  public static List<Contact> findContacts(String searchKey) {
-    String key = '%' + searchKey + '%';
+  public static List<Contact> getDevContactList() {
     return [
       SELECT Id, Name, Title, Phone, Email
       FROM Contact
-      WITH // WHERE Name LIKE :key AND Picture__c != null
-      SECURITY_ENFORCED
-      LIMIT 20
+      WHERE Title = 'Application Developer'
+      WITH SECURITY_ENFORCED
+      LIMIT 10
+    ];
+  }
+
+  @AuraEnabled(cacheable=true)
+  public static List<Contact> getCustSuccessContactList() {
+    return [
+      SELECT Id, Name, Title, Phone, Email
+      FROM Contact
+      WHERE Title = 'Customer Success'
+      WITH SECURITY_ENFORCED
+      LIMIT 10
     ];
   }
 

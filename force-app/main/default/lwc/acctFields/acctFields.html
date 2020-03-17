@@ -20,6 +20,12 @@
         </div>
     </lightning-datatable> -->
 
+    <template if:true={devContacts.data}>
+        <div>
+            <c-dev-contacts contacts={devContacts}></c-dev-contacts>
+        </div>
+    </template>
+
   <table class="slds-table slds-table_cell-buffer slds-table_bordered">
     <thead>
       <tr class="slds-line-height_reset">

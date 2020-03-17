@@ -1,5 +1,8 @@
 import { LightningElement, track, wire } from "lwc";
 import getContactList from "@salesforce/apex/ContactController.getContactList";
+import getDevContactList from "@salesforce/apex/ContactController.getDevContactList";
+import getCustSuccessContactList from "@salesforce/apex/ContactController.getCustSuccessContactList";
+
 
 // var query;
 // var records;
@@ -31,6 +34,8 @@ export default class AcctFields extends LightningElement {
   fieldList = ["Name", "createdDate"];
 
   @wire(getContactList) contacts;
+  @wire(getDevContactList) devContacts;
+  @wire(getCustSuccessContactList) custSuccessContacts;
 
   // result = sforce.connection.query("Select Name, Id from User");
   // records = result.getArray("records");
