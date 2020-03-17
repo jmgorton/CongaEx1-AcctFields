@@ -9,7 +9,7 @@ public with sharing class ContactController {
       FROM Contact
       WITH // WHERE Picture__c != null
       SECURITY_ENFORCED
-      LIMIT 10
+      LIMIT 20
     ];
   }
 
@@ -21,7 +21,7 @@ public with sharing class ContactController {
       FROM Contact
       WITH // WHERE Name LIKE :key AND Picture__c != null
       SECURITY_ENFORCED
-      LIMIT 10
+      LIMIT 20
     ];
   }
 
