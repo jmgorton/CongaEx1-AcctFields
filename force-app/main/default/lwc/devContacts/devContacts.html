@@ -6,8 +6,8 @@
           <p key={contact.Id}>{contact.Name}</p>
         </template>
       </template> -->
-      <template if:true={contacts.data}>
-        <template for:each={contacts.data} for:item="contact">
+      <template if:true={devcontacts}>
+        <template for:each={devcontacts} for:item="contact">
             <p key={contact.Id}>{contact.Name}</p>
         </template>
       </template>

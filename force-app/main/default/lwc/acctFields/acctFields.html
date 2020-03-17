@@ -6,9 +6,10 @@
           {contact.Name}, {contact.Title}
         </div>
       </template> -->
+
       <template if:true={contacts.data}>
         <template for:each={contacts.data} for:item="contact">
-            <p key={contact.Id}>{contact.Name}</p>
+            <p key={contact.Id}>{contact.Name}, {contact.Title}</p>
         </template>
       </template>
     </div>
@@ -21,9 +22,15 @@
     </lightning-datatable> -->
 
     <template if:true={devContacts.data}>
-        <div>
-            <c-dev-contacts contacts={devContacts}></c-dev-contacts>
-        </div>
+        <!-- <div>
+            <c-dev-contacts devcontacts={devContacts}></c-dev-contacts>
+        </div> -->
+        <template for:each={devContacts.data} for:item="devContact">
+            <p key={devContact.Id}>{devContact.Name}, {devContact.Title}</p>
+        </template>
+    </template>
+    <template if:true={devContacts.error}>
+        <div>Error.</div>
     </template>
 
   <table class="slds-table slds-table_cell-buffer slds-table_bordered">
