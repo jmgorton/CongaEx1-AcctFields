@@ -1,7 +1,7 @@
-// export default class AcctFields extends LightningElement {}
+import { LightningElement, track } from 'lwc';
 
-import { LightningElement } from 'lwc';
-export default class HelloIteration extends LightningElement {
+export default class AcctFields extends LightningElement {
+// export default class HelloIteration extends LightningElement {
     @track
     contacts = [
         {
