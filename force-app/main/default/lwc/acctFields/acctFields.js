@@ -4,12 +4,6 @@ import getContactList from "@salesforce/apex/ContactController.getContactList";
 import getThisDevContactList from "@salesforce/apex/ContactController.getThisDevContactList";
 import getThisCustSuccessContactList from "@salesforce/apex/ContactController.getThisCustSuccessContactList";
 
-// used temporarily for lwc table tests
-// import fetchDataHelper from './fetchDataHelper';
-
-// import DevContacts from "c/devContacts";
-
-
 const FIELDS = [
     'Account.Id',
     'Account.Name',
@@ -20,19 +14,6 @@ const FIELDS = [
     'Account.BillingState',
     'Account.BillingPostalCode'
 ];
-
-// used temporarily for lwc table tests
-// const columns = [
-//     { label: 'Last Name', fieldName: 'lastName' },
-//     { label: 'Title', fieldName: 'title' }
-// ];
-// const columns = [
-//     { label: 'Label', fieldName: 'name' },
-//     { label: 'Website', fieldName: 'website', type: 'url' },
-//     { label: 'Phone', fieldName: 'phone', type: 'phone' },
-//     { label: 'Balance', fieldName: 'amount', type: 'currency' },
-//     { label: 'CloseAt', fieldName: 'closeAt', type: 'date' },
-// ];
 
 export default class AcctFields extends LightningElement {
 
@@ -70,10 +51,7 @@ export default class AcctFields extends LightningElement {
     get billingPostalCode() {
         return this.account.data.fields.BillingPostalCode.value;
     }
-
-
-
-
+    
 
     // unused 
     @track
@@ -89,7 +67,6 @@ export default class AcctFields extends LightningElement {
         // name()
         // this.account.data.fields.Name.value
     ];
-    // acctFields = [ { this.account.data.fields.Name.value } ];
 
     // toggle for note section
     @track hideNotes = true;
@@ -163,26 +140,9 @@ export default class AcctFields extends LightningElement {
         }
     }
 
-
-
-
-
-
     @wire(getContactList) contacts;
     // @wire(getDevContactList) devContacts;
     @wire(getThisDevContactList, { recordId: '$recordId' }) devContacts;
     @wire(getThisCustSuccessContactList, { recordId: '$recordId' }) custSuccessContacts;
-
-
-
-    // temporarily used for lwc table tests
-    // @track devData = [];
-    // @track columns = columns;
-
-    // // eslint-disable-next-line @lwc/lwc/no-async-await
-    // async connectedCallback() {
-    //     const devData = await fetchDataHelper({ amountOfRecords: 100 });
-    //     this.devData = devData;
-    // }
 
 }
