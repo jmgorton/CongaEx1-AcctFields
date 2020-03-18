@@ -5,7 +5,7 @@ public with sharing class ContactController {
   @AuraEnabled(cacheable=true)
   public static List<Contact> getContactList() {
     return [
-      SELECT Id, Name, Title, Phone, Email
+      SELECT Id, Name, Title, Phone, Email, AccountId
       FROM Contact
       WITH SECURITY_ENFORCED
       LIMIT 10

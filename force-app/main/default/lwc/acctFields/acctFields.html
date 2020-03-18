@@ -9,17 +9,53 @@
 
       <template if:true={contacts.data}>
         <template for:each={contacts.data} for:item="contact">
-            <p key={contact.Id}>{contact.Name}, {contact.Title}</p>
+            <p key={contact.Id}>{contact.Name}, {contact.Title}, {contact.AccountId}</p>
         </template>
       </template>
     </div>
   </lightning-card>
+
+  <!-- <div>
+      Hello.
+
+      {$CurrentPage.Name}
+
+  </div> -->
 
   <!-- <lightning-datatable>
         <div>
 
         </div>
     </lightning-datatable> -->
+
+    <!-- wireGetRecordDynamicContact.html -->
+    <lightning-card title="My Contact Record" icon-name="standard:contact">
+        <template if:true={contact.data}>
+            <div class="slds-m-around_medium">
+                <p>{name}</p>
+                <p>{title}</p>
+                <p><lightning-formatted-phone value={phone}></lightning-formatted-phone></p>
+                <p><lightning-formatted-email value={email}></lightning-formatted-email></p>
+            </div>
+        </template>
+        <template if:true={contact.error}>
+            <!-- <c-error-panel errors={contact.error}></c-error-panel> -->
+        </template>
+    </lightning-card>
+
+    <!-- wireGetRecordDynamicContact.html -->
+    <lightning-card title="My Account Record" icon-name="standard:account">
+        <template if:true={account.data}>
+            <div>account data...</div>
+            <div class="slds-m-around_medium">
+                <p>{acctName}</p>
+                <p>{id}</p>
+            </div>
+        </template>
+        <template if:true={account.error}>
+            <!-- <c-error-panel errors={contact.error}></c-error-panel> -->
+        </template>
+    </lightning-card>
 
     <template if:true={devContacts.data}>
         <!-- <div>
