@@ -15,11 +15,9 @@
     </div>
   </lightning-card>
 
-  <!-- <lightning-datatable>
-        <div>
 
-        </div>
-    </lightning-datatable> -->
+
+
 
     <!-- wireGetRecordDynamicContact.html -->
     <lightning-card title="My Account Record" icon-name="standard:account">
@@ -34,29 +32,105 @@
         </template>
     </lightning-card>
 
+
+
+
+
     <table>
         <thead>
+
+        </thead>
+        <tbody>
             <tr>
-                <td>
-                    <template if:true={devContacts.data}>
-                        <!-- <div>
-                            <c-dev-contacts devcontacts={devContacts}></c-dev-contacts>
-                        </div> -->
-                        <template for:each={devContacts.data} for:item="devContact">
-                            <p key={devContact.Id}>
-                                {devContact.Name}, {devContact.Title}, {devContact.AccountId}
-                            </p>
-                        </template>
-                    </template>
-                    <template if:true={devContacts.error}>
-                        <div>Error.</div>
-                    </template>
+                <td class="contact-table">
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Contact Last Name">Last Name</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Contact Title">Title</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template if:true={devContacts.data}>
+                                <!-- <div>
+                                    <c-dev-contacts devcontacts={devContacts}></c-dev-contacts>
+                                </div> -->
+                                <template for:each={devContacts.data} for:item="devContact">
+                                    <!-- <p key={devContact.Id}>
+                                        {devContact.Name}, {devContact.Title}, {devContact.AccountId}
+                                    </p> -->
+                                    <tr key={devContact.Id} class="slds-hint-parent">
+                                        <th data-label="Contact Last Name" scope="row">
+                                            <div class="slds-truncate" title="Contact Last Name">
+                                                <a href="javascript:void(0);" tabindex="-1">{devContact.Name}</a>
+                                            </div>
+                                        </th>
+                                        <td data-label="Title">
+                                            <div class="slds-truncate" title="Contact Title">{devContact.Title}</div>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </template>
+                            <template if:true={devContacts.error}>
+                                <tr>
+                                    <td><div aria-colspan="7">Error</div></td>
+                                </tr>
+                            </template>
+                            <!-- <template if:false={devContacts.data}>
+
+                            </template> -->
+                        </tbody>
+                    </table>
                 </td>
-                <td>
-                    <template if:true={custSuccessContacts.data}>
-                        <!-- <div>
-                            <c-dev-contacts devcontacts={devContacts}></c-dev-contacts>
-                        </div> -->
+                <td class="contact-table">
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Contact Last Name">Last Name</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Contact Title">Title</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template if:true={custSuccessContacts.data}>
+                                <!-- <div>
+                                    <c-dev-contacts devcontacts={devContacts}></c-dev-contacts>
+                                </div> -->
+                                <template for:each={custSuccessContacts.data} for:item="custSuccessContact">
+                                    <!-- <p key={custSuccessContact.Id}>
+                                        {custSuccessContact.Name}, {custSuccessContact.Title}, {custSuccessContact.AccountId}
+                                    </p> -->
+                                    <tr key={custSuccessContact.Id} class="slds-hint-parent">
+                                        <th data-label="Contact Last Name" scope="row">
+                                            <div class="slds-truncate" title="Contact Last Name">
+                                                <a href="javascript:void(0);" tabindex="-1">{custSuccessContact.Name}</a>
+                                            </div>
+                                        </th>
+                                        <td data-label="Title">
+                                            <div class="slds-truncate" title="Contact Title">{custSuccessContact.Title}</div>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </template>
+                            <template if:true={devContacts.error}>
+                                <tr>
+                                    <td><div aria-colspan="7">Error</div></td>
+                                </tr>
+                            </template>
+                            <!-- <template if:false={devContacts.data}>
+
+                            </template> -->
+                        </tbody>
+                    </table>
+
+                    <!-- <template if:true={custSuccessContacts.data}>
                         <template for:each={custSuccessContacts.data} for:item="custSuccessContact">
                             <p key={custSuccessContact.Id}>
                                 {custSuccessContact.Name}, {custSuccessContact.Title}, {custSuccessContact.AccountId}
@@ -65,15 +139,15 @@
                     </template>
                     <template if:true={custSuccessContacts.error}>
                         <div>Error.</div>
-                    </template>
+                    </template> -->
                 </td>
             </tr>
-        </thead>
+        </tbody>
     </table>
 
 
 
-  <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+  <!-- <table class="slds-table slds-table_cell-buffer slds-table_bordered">
     <thead>
       <tr class="slds-line-height_reset">
         <th class="" scope="col">
@@ -159,5 +233,6 @@
         </td>
       </tr>
     </tbody>
-  </table>
+  </table> -->
+
 </template>
