@@ -23,6 +23,7 @@
     "prettier-plugin-apex": "^1.0.0"
   },
   "dependencies": {
-    "@salesforce/apex": "0.0.12"
+    "@salesforce/apex": "0.0.12",
+    "js-yaml": "^3.13.1"
   }
 }
