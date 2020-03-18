@@ -31,12 +31,32 @@ export default class AcctFields extends LightningElement {
         return this.account.data.fields.Id.value;
     }
 
-    get acctName() {
+    get name() {
         return this.account.data.fields.Name.value;
     }
 
-    get id() {
-        return this.account.data.fields.Id.value;
+    get numberOfEmployees() {
+        return this.account.data.fields.NumberOfEmployees.value;
+    }
+
+    get phone() {
+        return this.account.data.fields.Phone.value;
+    }
+
+    get billingStreet() {
+        return this.account.data.fields.BillingStreet.value;
+    }
+
+    get billingCity() {
+        return this.account.data.fields.BillingCity.value;
+    }
+
+    get billingState() {
+        return this.account.data.fields.BillingState.value;
+    }
+
+    get billingPostalCode() {
+        return this.account.data.fields.BillingPostalCode.value;
     }
 
   // @track
