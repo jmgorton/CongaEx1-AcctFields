@@ -10,16 +10,26 @@ import getThisCustSuccessContactList from "@salesforce/apex/ContactController.ge
 // var records;
 // var records1;
 
-const FIELDS2 = [
+const FIELDS = [
+    'Account.Id',
     'Account.Name',
-    'Account.Id'
+    'Account.NumberOfEmployees',
+    'Account.Phone',
+    'Account.BillingStreet',
+    'Account.BillingCity',
+    'Account.BillingState',
+    'Account.BillingPostalCode'
 ];
 
 export default class AcctFields extends LightningElement {
   // export default class HelloIteration extends LightningElement {
       @api recordId;
 
-      @wire(getRecord, { recordId: '$recordId', fields: FIELDS2 }) account;
+      @wire(getRecord, { recordId: '$recordId', fields: FIELDS }) account;
+
+    get acctId() {
+        return this.account.data.fields.Id.value;
+    }
 
     get acctName() {
         return this.account.data.fields.Name.value;
@@ -49,7 +59,7 @@ export default class AcctFields extends LightningElement {
   // ];
 
   @track
-  fieldList = ["Name", "createdDate"];
+  fieldList = ["Name", "CreatedDate"];
 
   @wire(getContactList) contacts;
 //   @wire(getDevContactList) devContacts;

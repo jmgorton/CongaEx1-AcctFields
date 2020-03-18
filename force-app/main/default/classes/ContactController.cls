@@ -13,6 +13,16 @@ public with sharing class ContactController {
   }
 
   @AuraEnabled(cacheable=true)
+  public static Number getThisContactCount(String recordId) {
+    return [
+      SELECT COUNT(*)
+      FROM Contact
+      WHERE AccountId = :recordId
+      WITH SECURITY_ENFORCED
+    ];
+  }
+
+  @AuraEnabled(cacheable=true)
   public static List<Contact> getDevContactList() {
     return [
       SELECT Id, Name, Title, Phone, Email
