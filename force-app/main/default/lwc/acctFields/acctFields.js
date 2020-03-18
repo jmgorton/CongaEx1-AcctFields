@@ -6,10 +6,6 @@ import getThisCustSuccessContactList from "@salesforce/apex/ContactController.ge
 // import DevContacts from "c/devContacts";
 
 
-// var query;
-// var records;
-// var records1;
-
 const FIELDS = [
     'Account.Id',
     'Account.Name',
@@ -22,9 +18,8 @@ const FIELDS = [
 ];
 
 export default class AcctFields extends LightningElement {
-  // export default class HelloIteration extends LightningElement {
-    @api recordId;
 
+    @api recordId;
     @wire(getRecord, { recordId: '$recordId', fields: FIELDS }) account;
 
     get acctId() {
@@ -61,15 +56,28 @@ export default class AcctFields extends LightningElement {
 
 
 
+
+
     @track
     fieldList = ["Name", "CreatedDate"];
 
-    @track value = [];
+    @track value = [
+        // {
+        //     Id: 0,
+        //     Name: 'Name',
+        //     Value: 'GenValue'
+        // }
+    ];
 
     get options() {
         return [
             { label: 'Name', value: 'name()' },
-            { label: 'Number of Employees', value: 'numberOfEmployees()' }
+            { label: 'Number of Employees', value: 'numberOfEmployees()' },
+            { label: 'Phone', value: 'phone()' },
+            { label: 'Billing Street', value: 'billingStreet()' },
+            { label: 'Billing City', value: 'billingCity()' },
+            { label: 'Billing State', value: 'billingState()' },
+            { label: 'Billing Postal Code', value: 'billingPostalCode()' }
         ];
     }
 
@@ -77,9 +85,25 @@ export default class AcctFields extends LightningElement {
         return this.value.join(', ');
     }
 
+    // @track acctFields;
+    get acctFields() {
+        var i = 0;
+        for (i; i < this.value.length; i++) {
+            if (this.value[i] === 'name()') 
+                this.value[0] = {
+                    Id: this.acctId(),
+                    Name: 'Name',
+                    Value: this.name()
+                };
+        }
+        return null;
+    }
+
     handleChange(e) {
         this.value = e.detail.value;
+        // if this.value === 'name()' set name(get name())
     }
+
 
 
 

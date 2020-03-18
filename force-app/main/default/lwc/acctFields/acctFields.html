@@ -29,11 +29,24 @@
                             <p>{acctId}</p>
                         </div> -->
 
-                        <template for:each={selectedValues} for:item="selectedValue">
+                        <!-- <template for:each={selectedValues} for:item="selectedValue">
                             <div key={selectedValues.Id}>
                                 {selectedValues.Name}
                             </div>
+                        </template> -->
+
+                        <!-- <template for:each={value} for:item="selectedValue">
+                            <div key={selectedValue.Id}>
+                                {selectedValue.Name}
+                            </div>
+                        </template> -->
+
+                        <template for:each={value} for:item="selectedValue">
+                            <div key={selectedValue.Id}>
+                                {selectedValue}
+                            </div>
                         </template>
+
 
                         <!-- <lightning-checkbox-group 
                             name="Checkbox Group"
@@ -61,6 +74,7 @@
     </table>
 
 
+    <hr>
 
 
 
