@@ -87,16 +87,20 @@ export default class AcctFields extends LightningElement {
     //     return null;
     // }
 
+    @track showNotes = false;
+
 
     get options() {
         return [
             { label: 'Name', value: 'name()' },
             { label: 'Number of Employees', value: 'numberOfEmployees()' },
+            { label: 'Custom Notes', value: 'customNotes()' },
             { label: 'Phone', value: 'phone()' },
             { label: 'Billing Street', value: 'billingStreet()' },
             { label: 'Billing City', value: 'billingCity()' },
             { label: 'Billing State', value: 'billingState()' },
-            { label: 'Billing Postal Code', value: 'billingPostalCode()' }
+            { label: 'Billing Postal Code', value: 'billingPostalCode()' },
+            { label: 'Number of Contacts', value: 'numberOfContacts()' }
         ];
     }
 
@@ -107,38 +111,17 @@ export default class AcctFields extends LightningElement {
     handleChange(e) {
         // keeps the boxes up to date
         this.value = e.detail.value;
-        // if this.value === 'name()' set name(get name())
 
+        // clears fields every time to handle case when box is unchecked
+        // TODO better way
         this.acctFields = [];
-
-        // eslint-disable-next-line vars-on-top
-        // for (var prop in e.detail.value) {
-        //     if (Object.prototype.hasOwnProperty.call(e.detail.value, prop)) {
-        //         // eslint-disable-next-line no-alert
-        //         alert("prop: " + prop + " obj: " + e.detail.value[prop]);
-        //         switch(e.detail.value[prop]) {
-        //             case 'name()':
-        //                 this.value[prop] = 'Name: ' + this.name();
-        //                 // eslint-disable-next-line no-alert
-        //                 alert(this.value[prop]);
-        //                 break;
-        //             default:
-
-        //         }
-        //     }
-        // }
+        this.showNotes = false;
 
         // eslint-disable-next-line vars-on-top
         for (var prop in this.value) {
             if (Object.prototype.hasOwnProperty.call(this.value, prop)) {
-                // eslint-disable-next-line no-alert
-                // alert(this.value[prop]);
                 switch(this.value[prop]) {
                     case 'name()':
-                        // eslint-disable-next-line no-alert
-                        // alert(name());
-                        // this.value[prop] = name();
-
                         this.acctFields[prop] = this.account.data.fields.Name.value;
                         break;
                     case 'numberOfEmployees()':
@@ -159,6 +142,12 @@ export default class AcctFields extends LightningElement {
                     // case 'billingPostalCode()':
                     //     this.acctFields[prop] = this.account.data.fields.BillingPostalCode.value;
                     //     break;
+                    case 'customNotes()':
+                        this.showNotes = true;
+                        break;
+                    case 'numberOfContacts()':
+                        this.acctFields[prop] = 666;
+                        break;
                     default:
                         // no action
                 }
