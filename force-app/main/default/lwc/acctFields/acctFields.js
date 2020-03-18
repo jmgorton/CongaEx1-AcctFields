@@ -71,7 +71,8 @@ export default class AcctFields extends LightningElement {
     ];
 
     @track acctFields = [
-
+        // name()
+        // this.account.data.fields.Name.value
     ];
     // get acctFields() {
     //     var i = 0;
@@ -104,8 +105,11 @@ export default class AcctFields extends LightningElement {
     }
 
     handleChange(e) {
+        // keeps the boxes up to date
         this.value = e.detail.value;
         // if this.value === 'name()' set name(get name())
+
+        this.acctFields = [];
 
         // eslint-disable-next-line vars-on-top
         // for (var prop in e.detail.value) {
@@ -137,16 +141,26 @@ export default class AcctFields extends LightningElement {
 
                         this.acctFields[prop] = this.account.data.fields.Name.value;
                         break;
+                    case 'numberOfEmployees()':
+                        this.acctFields[prop] = this.account.data.fields.NumberOfEmployees.value;
+                        break;
+                    case 'phone()':
+                        this.acctFields[prop] = this.account.data.fields.Phone.value;
+                        break;
+                    case 'billingStreet()':
+                        this.acctFields[prop] = this.account.data.fields.BillingStreet.value;
+                        break;
+                    case 'billingCity()':
+                        this.acctFields[prop] = this.account.data.fields.BillingCity.value;
+                        break;
+                    case 'billingState()':
+                        this.acctFields[prop] = this.account.data.fields.BillingState.value;
+                        break;
+                    // case 'billingPostalCode()':
+                    //     this.acctFields[prop] = this.account.data.fields.BillingPostalCode.value;
+                    //     break;
                     default:
                         // no action
-                }
-
-                // test
-                // eslint-disable-next-line vars-on-top
-                for (var subProp in this.value[prop]) {
-                    if (Object.prototype.hasOwnProperty.call(this.value[prop], subProp))
-                        // eslint-disable-next-line no-alert
-                        alert("subProp: " + subProp + ", val: " + this.value[prop][subProp]);
                 }
             }
         }
