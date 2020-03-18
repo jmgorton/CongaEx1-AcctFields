@@ -5,3 +5,11 @@ table {
 .contact-table {
     vertical-align: top
 }
+
+.contact-table-header {
+    /* background: #0066ff; */
+    background: rgb(100, 171, 237);
+    text-align: center;
+    font-size: 14px;
+    color: white;
+}

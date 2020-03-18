@@ -1,26 +1,26 @@
 <template>
-  <lightning-card title="ContactInformation" icon-name="custom:custom14">
-    <div class="slds-m-around_medium">
+  <!-- <lightning-card title="Contact Information" icon-name="custom:custom14"> -->
+    <!-- <div class="slds-m-around_medium"> -->
       <!-- <template for:each={contacts} for:item="contact">
         <div key={contact.Id}>
           {contact.Name}, {contact.Title}
         </div>
       </template> -->
 
-      <template if:true={contacts.data}>
+      <!-- <template if:true={contacts.data}>
         <template for:each={contacts.data} for:item="contact">
             <p key={contact.Id}>{contact.Name}, {contact.Title}, {contact.AccountId}</p>
         </template>
-      </template>
-    </div>
-  </lightning-card>
+      </template> -->
+    <!-- </div> -->
+  <!-- </lightning-card> -->
 
 
 
 
 
     <!-- wireGetRecordDynamicContact.html -->
-    <lightning-card title="My Account Record" icon-name="standard:account">
+    <lightning-card title="My Account Record" icon-name="standard:account" align="center">
         <template if:true={account.data}>
             <div class="slds-m-around_medium">
                 <p>{acctName}</p>
@@ -38,7 +38,18 @@
 
     <table>
         <thead>
-
+            <tr>
+                <th class="contact-table-header">
+                    <div class="slds-truncate" title="Application Developer Contacts">
+                        Developer Contacts
+                    </div>
+                </th>
+                <th class="contact-table-header">
+                    <div class="slds-truncate" title="Customer Success Contacts">
+                        Customer Success Contacts
+                    </div>
+                </th>
+            </tr>
         </thead>
         <tbody>
             <tr>
