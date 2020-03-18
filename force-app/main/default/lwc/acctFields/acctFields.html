@@ -22,12 +22,11 @@
     <table>
         <tr>
             <td>
-                <lightning-card title="My Account Record" icon-name="standard:account" align="center">
+                <lightning-card title="My Account Details" icon-name="standard:account" align="center">
                     <template if:true={account.data}>
-                        <!-- <div class="slds-m-around_medium">
-                            <p>{name}</p>
-                            <p>{acctId}</p>
-                        </div> -->
+                        <div class="slds-m-around_medium">
+                            <p>Account ID: {acctId}</p>
+                        </div>
 
                         <!-- <template for:each={selectedValues} for:item="selectedValue">
                             <div key={selectedValues.Id}>

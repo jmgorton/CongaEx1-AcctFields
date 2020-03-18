@@ -67,7 +67,25 @@ export default class AcctFields extends LightningElement {
         //     Name: 'Name',
         //     Value: 'GenValue'
         // }
+        'name()'
     ];
+
+    @track acctFields = [
+
+    ];
+    // get acctFields() {
+    //     var i = 0;
+    //     for (i; i < this.value.length; i++) {
+    //         if (this.value[i] === 'name()') 
+    //             this.value[0] = {
+    //                 Id: this.acctId(),
+    //                 Name: 'Name',
+    //                 Value: this.name()
+    //             };
+    //     }
+    //     return null;
+    // }
+
 
     get options() {
         return [
@@ -85,23 +103,45 @@ export default class AcctFields extends LightningElement {
         return this.value.join(', ');
     }
 
-    // @track acctFields;
-    get acctFields() {
-        var i = 0;
-        for (i; i < this.value.length; i++) {
-            if (this.value[i] === 'name()') 
-                this.value[0] = {
-                    Id: this.acctId(),
-                    Name: 'Name',
-                    Value: this.name()
-                };
-        }
-        return null;
-    }
-
     handleChange(e) {
         this.value = e.detail.value;
         // if this.value === 'name()' set name(get name())
+
+        // eslint-disable-next-line vars-on-top
+        // for (var prop in e.detail.value) {
+        //     if (Object.prototype.hasOwnProperty.call(e.detail.value, prop)) {
+        //         // eslint-disable-next-line no-alert
+        //         alert("prop: " + prop + " obj: " + e.detail.value[prop]);
+        //         switch(e.detail.value[prop]) {
+        //             case 'name()':
+        //                 this.value[prop] = 'Name: ' + this.name();
+        //                 // eslint-disable-next-line no-alert
+        //                 alert(this.value[prop]);
+        //                 break;
+        //             default:
+
+        //         }
+        //     }
+        // }
+
+        // eslint-disable-next-line vars-on-top
+        for (var prop in this.value) {
+            if (Object.prototype.hasOwnProperty.call(this.value, prop)) {
+                // eslint-disable-next-line no-alert
+                // alert(this.value[prop]);
+                switch(this.value[prop]) {
+                    case 'name()':
+                        // eslint-disable-next-line no-alert
+                        // alert(name());
+                        // this.value[prop] = name();
+
+                        this.value[prop] = this.account.data.fields.Name.value;
+                        break;
+                    default:
+                        // no action
+                }
+            }
+        }
     }
 
 
