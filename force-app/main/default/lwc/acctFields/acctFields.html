@@ -15,13 +15,6 @@
     </div>
   </lightning-card>
 
-  <!-- <div>
-      Hello.
-
-      {$CurrentPage.Name}
-
-  </div> -->
-
   <!-- <lightning-datatable>
         <div>
 
@@ -57,17 +50,44 @@
         </template>
     </lightning-card>
 
-    <template if:true={devContacts.data}>
-        <!-- <div>
-            <c-dev-contacts devcontacts={devContacts}></c-dev-contacts>
-        </div> -->
-        <template for:each={devContacts.data} for:item="devContact">
-            <p key={devContact.Id}>{devContact.Name}, {devContact.Title}</p>
-        </template>
-    </template>
-    <template if:true={devContacts.error}>
-        <div>Error.</div>
-    </template>
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    <template if:true={devContacts.data}>
+                        <!-- <div>
+                            <c-dev-contacts devcontacts={devContacts}></c-dev-contacts>
+                        </div> -->
+                        <template for:each={devContacts.data} for:item="devContact">
+                            <p key={devContact.Id}>
+                                {devContact.Name}, {devContact.Title}, {devContact.AccountId}
+                            </p>
+                        </template>
+                    </template>
+                    <template if:true={devContacts.error}>
+                        <div>Error.</div>
+                    </template>
+                </td>
+                <td>
+                    <template if:true={custSuccessContacts.data}>
+                        <!-- <div>
+                            <c-dev-contacts devcontacts={devContacts}></c-dev-contacts>
+                        </div> -->
+                        <template for:each={custSuccessContacts.data} for:item="custSuccessContact">
+                            <p key={custSuccessContact.Id}>
+                                {custSuccessContact.Name}, {custSuccessContact.Title}, {custSuccessContact.AccountId}
+                            </p>
+                        </template>
+                    </template>
+                    <template if:true={custSuccessContacts.error}>
+                        <div>Error.</div>
+                    </template>
+                </td>
+            </tr>
+        </thead>
+    </table>
+
+
 
   <table class="slds-table slds-table_cell-buffer slds-table_bordered">
     <thead>

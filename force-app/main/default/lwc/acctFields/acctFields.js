@@ -1,8 +1,9 @@
 import { LightningElement, track, wire, api } from "lwc";
 import { getRecord } from 'lightning/uiRecordApi';
 import getContactList from "@salesforce/apex/ContactController.getContactList";
-import getDevContactList from "@salesforce/apex/ContactController.getDevContactList";
-import getCustSuccessContactList from "@salesforce/apex/ContactController.getCustSuccessContactList";
+import getThisDevContactList from "@salesforce/apex/ContactController.getThisDevContactList";
+import getThisCustSuccessContactList from "@salesforce/apex/ContactController.getThisCustSuccessContactList";
+// import DevContacts from "c/devContacts";
 
 
 // var query;
@@ -75,8 +76,9 @@ export default class AcctFields extends LightningElement {
   fieldList = ["Name", "createdDate"];
 
   @wire(getContactList) contacts;
-  @wire(getDevContactList) devContacts;
-  @wire(getCustSuccessContactList) custSuccessContacts;
+//   @wire(getDevContactList) devContacts;
+  @wire(getThisDevContactList, { recordId: '$recordId' }) devContacts;
+  @wire(getThisCustSuccessContactList, { recordId: '$recordId' }) custSuccessContacts;
 
   // result = sforce.connection.query("Select Name, Id from User");
   // records = result.getArray("records");

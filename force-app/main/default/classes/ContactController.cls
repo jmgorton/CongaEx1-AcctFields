@@ -24,11 +24,37 @@ public with sharing class ContactController {
   }
 
   @AuraEnabled(cacheable=true)
+  public static List<Contact> getThisDevContactList(String recordId) {
+    return [
+      SELECT Id, Name, Title, Phone, Email, AccountId
+      FROM Contact
+      WHERE Title = 'Application Developer'
+      AND AccountId = :recordId
+      WITH SECURITY_ENFORCED
+      LIMIT 10
+    ];
+  }
+
+  @AuraEnabled(cacheable=true)
   public static List<Contact> getCustSuccessContactList() {
     return [
-      SELECT Id, Name, Title, Phone, Email
+      SELECT Id, Name, Title, Phone, Email, AccountId
       FROM Contact
       WHERE Title = 'Customer Success'
+      WITH SECURITY_ENFORCED
+      LIMIT 10
+    ];
+  }
+
+  @AuraEnabled(cacheable=true)
+  public static List<Contact> getThisCustSuccessContactList(String recordId) {
+    //   String key = '\'' + recordId + '\'';
+    String key = recordId;
+    return [
+      SELECT Id, Name, Title, Phone, Email, AccountId
+      FROM Contact
+      WHERE Title = 'Customer Success'
+      AND AccountId = :key
       WITH SECURITY_ENFORCED
       LIMIT 10
     ];
