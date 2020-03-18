@@ -1,24 +1,4 @@
 <template>
-  <!-- <lightning-card title="Contact Information" icon-name="custom:custom14"> -->
-    <!-- <div class="slds-m-around_medium"> -->
-      <!-- <template for:each={contacts} for:item="contact">
-        <div key={contact.Id}>
-          {contact.Name}, {contact.Title}
-        </div>
-      </template> -->
-
-      <!-- <template if:true={contacts.data}>
-        <template for:each={contacts.data} for:item="contact">
-            <p key={contact.Id}>{contact.Name}, {contact.Title}, {contact.AccountId}</p>
-        </template>
-      </template> -->
-    <!-- </div> -->
-  <!-- </lightning-card> -->
-
-
-
-
-
     <table>
         <tr>
             <td>
@@ -27,19 +7,6 @@
                         <div class="slds-m-around_medium">
                             <p>Account ID: {acctId}</p>
                         </div>
-
-                        <!-- <template for:each={selectedValues} for:item="selectedValue">
-                            <div key={selectedValues.Id}>
-                                {selectedValues.Name}
-                            </div>
-                        </template> -->
-
-                        <!-- <template for:each={value} for:item="selectedValue">
-                            <div key={selectedValue.Id}>
-                                {selectedValue.Name}
-                            </div>
-                        </template> -->
-
                         <template for:each={acctFields} for:item="selectedValue">
                             <div key={selectedValue.Id}>
                                 {selectedValue}
@@ -51,16 +18,6 @@
                                 <lightning-input type="text" placeholder="Notes go here..."></lightning-input>
                             </div>
                         </template>
-
-
-                        <!-- <lightning-checkbox-group 
-                            name="Checkbox Group"
-                            options={options}
-                            value={value}
-                            onchange={handleChange}>
-                        </lightning-checkbox-group> -->
-
-                        <!-- <p>Selected Values are: {selectedValues}</p> -->
                     </template>
                     <template if:true={account.error}>
                         <!-- <c-error-panel errors={contact.error}></c-error-panel> -->
@@ -78,10 +35,7 @@
         </tr>
     </table>
 
-
     <hr>
-
-
 
     <table>
         <thead>
@@ -114,13 +68,7 @@
                         </thead>
                         <tbody>
                             <template if:true={devContacts.data}>
-                                <!-- <div>
-                                    <c-dev-contacts devcontacts={devContacts}></c-dev-contacts>
-                                </div> -->
                                 <template for:each={devContacts.data} for:item="devContact">
-                                    <!-- <p key={devContact.Id}>
-                                        {devContact.Name}, {devContact.Title}, {devContact.AccountId}
-                                    </p> -->
                                     <tr key={devContact.Id} class="slds-hint-parent">
                                         <th data-label="Contact Last Name" scope="row">
                                             <div class="slds-truncate" title="Contact Last Name">
@@ -138,9 +86,6 @@
                                     <td><div aria-colspan="7">Error</div></td>
                                 </tr>
                             </template>
-                            <!-- <template if:false={devContacts.data}>
-
-                            </template> -->
                         </tbody>
                     </table>
                 </td>
@@ -158,13 +103,7 @@
                         </thead>
                         <tbody>
                             <template if:true={custSuccessContacts.data}>
-                                <!-- <div>
-                                    <c-dev-contacts devcontacts={devContacts}></c-dev-contacts>
-                                </div> -->
                                 <template for:each={custSuccessContacts.data} for:item="custSuccessContact">
-                                    <!-- <p key={custSuccessContact.Id}>
-                                        {custSuccessContact.Name}, {custSuccessContact.Title}, {custSuccessContact.AccountId}
-                                    </p> -->
                                     <tr key={custSuccessContact.Id} class="slds-hint-parent">
                                         <th data-label="Contact Last Name" scope="row">
                                             <div class="slds-truncate" title="Contact Last Name">
@@ -182,22 +121,8 @@
                                     <td><div aria-colspan="7">Error</div></td>
                                 </tr>
                             </template>
-                            <!-- <template if:false={devContacts.data}>
-
-                            </template> -->
                         </tbody>
                     </table>
-
-                    <!-- <template if:true={custSuccessContacts.data}>
-                        <template for:each={custSuccessContacts.data} for:item="custSuccessContact">
-                            <p key={custSuccessContact.Id}>
-                                {custSuccessContact.Name}, {custSuccessContact.Title}, {custSuccessContact.AccountId}
-                            </p>
-                        </template>
-                    </template>
-                    <template if:true={custSuccessContacts.error}>
-                        <div>Error.</div>
-                    </template> -->
                 </td>
             </tr>
         </tbody>

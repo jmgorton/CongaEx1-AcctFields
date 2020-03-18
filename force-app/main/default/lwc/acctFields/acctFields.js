@@ -62,11 +62,6 @@ export default class AcctFields extends LightningElement {
     fieldList = ["Name", "CreatedDate"];
 
     @track value = [
-        // {
-        //     Id: 0,
-        //     Name: 'Name',
-        //     Value: 'GenValue'
-        // }
         'name()'
     ];
 
@@ -74,18 +69,6 @@ export default class AcctFields extends LightningElement {
         // name()
         // this.account.data.fields.Name.value
     ];
-    // get acctFields() {
-    //     var i = 0;
-    //     for (i; i < this.value.length; i++) {
-    //         if (this.value[i] === 'name()') 
-    //             this.value[0] = {
-    //                 Id: this.acctId(),
-    //                 Name: 'Name',
-    //                 Value: this.name()
-    //             };
-    //     }
-    //     return null;
-    // }
 
     @track showNotes = false;
 
