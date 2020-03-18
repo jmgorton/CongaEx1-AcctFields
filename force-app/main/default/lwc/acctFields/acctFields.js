@@ -135,10 +135,18 @@ export default class AcctFields extends LightningElement {
                         // alert(name());
                         // this.value[prop] = name();
 
-                        this.value[prop] = this.account.data.fields.Name.value;
+                        this.acctFields[prop] = this.account.data.fields.Name.value;
                         break;
                     default:
                         // no action
+                }
+
+                // test
+                // eslint-disable-next-line vars-on-top
+                for (var subProp in this.value[prop]) {
+                    if (Object.prototype.hasOwnProperty.call(this.value[prop], subProp))
+                        // eslint-disable-next-line no-alert
+                        alert("subProp: " + subProp + ", val: " + this.value[prop][subProp]);
                 }
             }
         }
