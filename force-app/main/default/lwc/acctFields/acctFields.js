@@ -3,6 +3,10 @@ import { getRecord } from 'lightning/uiRecordApi';
 import getContactList from "@salesforce/apex/ContactController.getContactList";
 import getThisDevContactList from "@salesforce/apex/ContactController.getThisDevContactList";
 import getThisCustSuccessContactList from "@salesforce/apex/ContactController.getThisCustSuccessContactList";
+
+// used temporarily for lwc table tests
+// import fetchDataHelper from './fetchDataHelper';
+
 // import DevContacts from "c/devContacts";
 
 
@@ -16,6 +20,19 @@ const FIELDS = [
     'Account.BillingState',
     'Account.BillingPostalCode'
 ];
+
+// used temporarily for lwc table tests
+// const columns = [
+//     { label: 'Last Name', fieldName: 'lastName' },
+//     { label: 'Title', fieldName: 'title' }
+// ];
+// const columns = [
+//     { label: 'Label', fieldName: 'name' },
+//     { label: 'Website', fieldName: 'website', type: 'url' },
+//     { label: 'Phone', fieldName: 'phone', type: 'phone' },
+//     { label: 'Balance', fieldName: 'amount', type: 'currency' },
+//     { label: 'CloseAt', fieldName: 'closeAt', type: 'date' },
+// ];
 
 export default class AcctFields extends LightningElement {
 
@@ -58,21 +75,27 @@ export default class AcctFields extends LightningElement {
 
 
 
+    // unused 
     @track
     fieldList = ["Name", "CreatedDate"];
 
+    // values passed from the checkboxes, to be used in handler to determine action
     @track value = [
         'name()'
     ];
 
+    // acct fields to be 
     @track acctFields = [
         // name()
         // this.account.data.fields.Name.value
     ];
+    // acctFields = [ { this.account.data.fields.Name.value } ];
 
-    @track showNotes = false;
+    // toggle for note section
+    @track hideNotes = true;
 
 
+    // checkbox options
     get options() {
         return [
             { label: 'Name', value: 'name()' },
@@ -87,10 +110,12 @@ export default class AcctFields extends LightningElement {
         ];
     }
 
+    // used temporarily for checkbox testing
     get selectedValues() {
         return this.value.join(', ');
     }
 
+    // when a checkbox is selected or unselected, update the acct fields and checkboxes
     handleChange(e) {
         // keeps the boxes up to date
         this.value = e.detail.value;
@@ -98,7 +123,7 @@ export default class AcctFields extends LightningElement {
         // clears fields every time to handle case when box is unchecked
         // TODO better way
         this.acctFields = [];
-        this.showNotes = false;
+        this.hideNotes = true;
 
         // eslint-disable-next-line vars-on-top
         for (var prop in this.value) {
@@ -122,11 +147,11 @@ export default class AcctFields extends LightningElement {
                     case 'billingState()':
                         this.acctFields[prop] = this.account.data.fields.BillingState.value;
                         break;
-                    // case 'billingPostalCode()':
-                    //     this.acctFields[prop] = this.account.data.fields.BillingPostalCode.value;
-                    //     break;
+                    case 'billingPostalCode()':
+                        this.acctFields[prop] = this.account.data.fields.BillingPostalCode.value;
+                        break;
                     case 'customNotes()':
-                        this.showNotes = true;
+                        this.hideNotes = false;
                         break;
                     case 'numberOfContacts()':
                         this.acctFields[prop] = 666;
@@ -141,9 +166,23 @@ export default class AcctFields extends LightningElement {
 
 
 
+
+
     @wire(getContactList) contacts;
     // @wire(getDevContactList) devContacts;
     @wire(getThisDevContactList, { recordId: '$recordId' }) devContacts;
     @wire(getThisCustSuccessContactList, { recordId: '$recordId' }) custSuccessContacts;
+
+
+
+    // temporarily used for lwc table tests
+    // @track devData = [];
+    // @track columns = columns;
+
+    // // eslint-disable-next-line @lwc/lwc/no-async-await
+    // async connectedCallback() {
+    //     const devData = await fetchDataHelper({ amountOfRecords: 100 });
+    //     this.devData = devData;
+    // }
 
 }

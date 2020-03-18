@@ -2,6 +2,7 @@
     <table>
         <tr>
             <td>
+                <!-- lightning card for displaying account details -->
                 <lightning-card title="My Account Details" icon-name="standard:account" align="center">
                     <template if:true={account.data}>
                         <div class="slds-m-around_medium">
@@ -13,11 +14,11 @@
                             </div>
                         </template>
 
-                        <template if:true={showNotes}>
-                            <div class="slds-p-around_medium lgc-bg">
+                        <!-- <template if:true={showNotes}> -->
+                            <div class="slds-p-around_medium lgc-bg" hidden={hideNotes}>
                                 <lightning-input type="text" placeholder="Notes go here..."></lightning-input>
                             </div>
-                        </template>
+                        <!-- </template> -->
                     </template>
                     <template if:true={account.error}>
                         <!-- <c-error-panel errors={contact.error}></c-error-panel> -->
@@ -25,6 +26,7 @@
                 </lightning-card>
             </td>
             <td>
+                <!-- checkboxes to select which attributes of the account to display -->
                 <lightning-checkbox-group 
                     name="Checkbox Group"
                     options={options}
@@ -55,6 +57,7 @@
         <tbody>
             <tr>
                 <td class="contact-table">
+                    <!-- developer contacts list -->
                     <table class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
@@ -88,8 +91,16 @@
                             </template>
                         </tbody>
                     </table>
+                    <!-- <div style="height: 300px;">
+                        <lightning-datatable
+                            key-field="id"
+                            data={devData}
+                            columns={columns}>
+                        </lightning-datatable>
+                    </div>  -->
                 </td>
                 <td class="contact-table">
+                    <!-- customer success contacts list -->
                     <table class="slds-table slds-table_cell-buffer slds-table_bordered">
                         <thead>
                             <tr class="slds-line-height_reset">
